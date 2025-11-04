@@ -1,209 +1,201 @@
-:root {
-  --nav-offset-desktop: 140px;
-  --nav-offset-mobile: 120px;
-}
-
-/* ---------- GLOBAL ---------- */
+/* ===== BASE STYLES ===== */
 body {
-  margin: 0;
   font-family: "Georgia", serif;
-  background-color: #faf7f2;
-  color: #3a2b20;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ---------- HEADER ---------- */
-header {
-  text-align: center;
-  background: linear-gradient(to bottom, #fdfaf7, #f7f2ec);
-  padding: 2.5rem 1rem 1.5rem;
-  transition: all 0.45s ease;
-  position: relative;
-  z-index: 20;
-}
-header img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  transition: width 0.4s ease, height 0.4s ease;
-}
-header h1 {
-  margin: 1rem 0 0.5rem;
-  font-size: 2rem;
-  color: #3a2b20;
-}
-header p {
   margin: 0;
-  font-style: italic;
-  color: #7a6b5b;
-}
-header.shrink img {
-  width: 100px;
-  height: 100px;
-}
-header.shrink h1 {
-  font-size: 1.4rem;
+  background-color: #faf8f6;
+  color: #333;
+  scroll-behavior: smooth;
 }
 
-/* ---------- NAV ---------- */
-nav {
-  background: #f5efe7;
-  border-top: 1px solid #e0d5c5;
-  border-bottom: 1px solid #d9cbb8;
-  position: sticky;
+/* ===== HEADER ===== */
+header {
+  position: fixed;
   top: 0;
-  z-index: 18;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  background: linear-gradient(to bottom, #ffffff, #f7f4f1);
+  text-align: center;
+  padding: 35px 0 10px;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
-.nav-links {
-  list-style: none;
+
+header img {
+  width: 140px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: width 0.4s ease, transform 0.4s ease;
+}
+
+header.shrink img {
+  width: 80px;
+}
+
+header h1 {
+  font-size: 1.9em;
+  color: #4b3b2f;
+  margin: 10px 0 5px;
+  transition: font-size 0.4s ease;
+}
+
+header.shrink h1 {
+  font-size: 1.4em;
+}
+
+header .dates {
+  color: #5a4a3d;
+  font-style: italic;
+  margin: 0;
+  font-size: 1em;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+header.shrink .dates {
+  opacity: 0;
+}
+
+/* ===== NAV BAR ===== */
+nav {
+  margin-top: 10px;
+  background-color: #e9e4df;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0.8rem 1rem;
-  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: all 0.4s ease;
 }
-.nav-links li {
-  margin: 0 1rem;
-}
-.nav-links a {
-  color: #3a2b20;
+
+nav a {
   text-decoration: none;
-  font-weight: 700;
-  padding: 0.2rem;
+  color: #4b3b2f;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 4px;
   transition: color 0.3s ease;
 }
-.nav-links a.active,
-.nav-links a:hover {
-  color: #b37a50;
-  border-bottom: 2px solid #b37a50;
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #a17b5c;
+  transition: width 0.3s ease;
 }
 
-/* ---------- BIBLE VERSE ---------- */
-.verse-banner {
-  background: linear-gradient(to right, #fffdf9, #fbf5ef);
-  padding: 1.2rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid #e6d8c9;
-  color: #4a3422;
-  font-style: italic;
-  animation: fadeInUp 1s ease both;
-}
-.verse-banner blockquote {
-  margin: 0;
-  max-width: 960px;
-  margin-inline: auto;
-  font-size: 1.1rem;
-  line-height: 1.7;
-}
-.verse-banner footer {
-  display: block;
-  margin-top: 0.6rem;
-  font-size: 1rem;
-  color: #7a5e47;
-  font-style: normal;
-}
-
-/* ---------- MAIN CONTENT ---------- */
-main {
-  padding: clamp(1rem, 2vw, 2rem);
-}
-section {
-  max-width: 920px;
-  margin: 2.8rem auto;
-  padding: clamp(1rem, 2vw, 1.8rem);
-  background: #fffefc;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-  scroll-margin-top: var(--nav-offset-desktop);
-}
-section.visible {
-  opacity: 1;
-  transform: none;
-}
-h2 {
-  border-bottom: 2px solid #d8c8b0;
-  padding-bottom: 0.5rem;
-  margin-bottom: 1rem;
-  color: #3a2b20;
-}
-
-/* ---------- GALLERY ---------- */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.gallery img {
+nav a.active::after,
+nav a:hover::after {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.25s ease;
-}
-.gallery img:hover {
-  transform: translateY(-6px);
 }
 
-/* ---------- FOOTER ---------- */
+nav a:hover,
+nav a.active {
+  color: #a17b5c;
+  text-shadow: 0 0 6px rgba(161, 123, 92, 0.4);
+}
+
+/* ===== CONTENT SECTIONS ===== */
+.content-section {
+  max-width: 900px;
+  margin: 350px auto 80px;
+  padding: 20px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content-section h2 {
+  border-bottom: 2px solid #d8c8b8;
+  padding-bottom: 5px;
+  color: #4b3b2f;
+  font-size: 1.6em;
+  margin-bottom: 15px;
+}
+
+/* ===== BIBLE VERSE ===== */
+.verse-section {
+  text-align: center;
+  font-style: italic;
+  color: #5a4a3d;
+  background: #f5ede6;
+  margin-top: 350px;
+}
+
+.verse-section blockquote {
+  font-size: 1.2em;
+  margin: 20px auto 10px;
+}
+
+.verse-section cite {
+  display: block;
+  margin-top: 5px;
+  color: #7a6a5c;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* ===== FOOTER ===== */
 footer {
   text-align: center;
-  padding: 2rem 1rem;
-  background: #f0e8de;
-  border-top: 1px solid #d9cbb8;
-  color: #7a6b5b;
+  padding: 40px 20px;
+  background-color: #f0ebe6;
+  color: #5a4a3d;
+  font-style: italic;
+  border-top: 1px solid #d8c8b8;
 }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 900px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
   header img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
   }
-  header h1 {
-    font-size: 1.6rem;
-  }
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: 0.7rem;
-  }
-  section {
-    scroll-margin-top: var(--nav-offset-mobile);
-  }
-  .gallery {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.8rem;
-  }
-  .verse-banner blockquote {
-    font-size: 1rem;
-  }
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
+  header.shrink img {
+    width: 70px;
   }
-  to {
-    opacity: 1;
-    transform: none;
+
+  nav {
+    flex-wrap: wrap;
+    font-size: 0.9em;
+    gap: 15px;
   }
-}
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
-}
-.fade-in.delay-1 {
-  animation-delay: 0.3s;
+
+  .content-section {
+    margin: 300px auto 50px;
+    padding: 15px;
+  }
 }
