@@ -371,3 +371,67 @@ footer {
     object-fit: cover;
   }
 }
+
+
+/* ===== FINAL MOBILE + SAFARI SAFE FIX FOR NAVBAR ===== */
+@supports (-webkit-touch-callout: none) or (overflow: -webkit-paged-x) {
+  header, nav {
+    position: relative !important;
+    z-index: 1000;
+  }
+
+  .header-nav-wrapper {
+    position: fixed;
+    top: env(safe-area-inset-top, 0);
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #faf7f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding-bottom: 5px;
+  }
+
+  header {
+    text-align: center;
+    padding: 10px 0 2px;
+    background: #faf7f2;
+  }
+
+  nav {
+    background: #e9dfd3;
+    border-top: 1px solid #d6c8b6;
+    border-bottom: 1px solid #d6c8b6;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px 0;
+  }
+
+  body {
+    padding-top: 200px; /* ensures no overlap with fixed header+nav */
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  header h1 {
+    font-size: clamp(1em, 4.2vw, 1.4em);
+    line-height: 1.3em;
+    margin: 8px 0 4px;
+    padding: 0 20px;
+    word-break: break-word;
+  }
+
+  header p.date {
+    font-size: 0.9em;
+    line-height: 1.2em;
+    color: #5c4b3a;
+  }
+}
