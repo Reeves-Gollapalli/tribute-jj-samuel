@@ -299,3 +299,75 @@ footer {
 }
 
 
+/* ===== UNIVERSAL MOBILE + SAFARI FIX FOR HEADER & NAV ===== */
+@supports (-webkit-touch-callout: none) or (overflow: -webkit-paged-x) {
+  /* Special fix for iOS Safari */
+  header,
+  nav {
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1000;
+    backface-visibility: hidden;
+    transform: translateZ(0); /* hardware acceleration prevents flicker */
+  }
+
+  header {
+    top: 0;
+    background-color: #faf7f2;
+    padding-bottom: 6px;
+  }
+
+  nav {
+    top: 110px; /* sits right below the portrait & title */
+    background-color: #e9dfd3;
+    border-top: 1px solid #d6c8b6;
+    border-bottom: 1px solid #d6c8b6;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #faf7f2;
+    z-index: 1000;
+  }
+
+  nav {
+    position: fixed;
+    top: 105px; /* adjust if portrait overlaps */
+    width: 100%;
+    background: #e9dfd3;
+    border-top: 1px solid #d6c8b6;
+    border-bottom: 1px solid #d6c8b6;
+    z-index: 999;
+  }
+
+  /* Prevent body content from going under the fixed elements */
+  body {
+    padding-top: 190px; /* gives room below header + nav */
+    overflow-x: hidden;
+  }
+
+  /* Reduce font and spacing for long titles */
+  header h1 {
+    font-size: clamp(1em, 4.2vw, 1.4em);
+    padding: 0 20px;
+    line-height: 1.3em;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  header p.date {
+    font-size: 0.9em;
+    line-height: 1.2em;
+  }
+
+  header img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+}
