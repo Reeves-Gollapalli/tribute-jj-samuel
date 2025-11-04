@@ -1,4 +1,4 @@
-/* ===== BASE STYLES ===== */
+/* ========== BASE STYLES ========== */
 body {
   font-family: "Georgia", serif;
   margin: 0;
@@ -7,24 +7,25 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ===== HEADER ===== */
+/* ========== HEADER ========== */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(to bottom, #ffffff, #f7f4f1);
   text-align: center;
-  padding: 35px 0 10px;
+  background: linear-gradient(to bottom, #ffffff, #f7f4f1);
   z-index: 1000;
-  transition: all 0.4s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
 header img {
-  width: 140px;
+  width: 130px;
+  height: auto;
   border-radius: 50%;
+  margin-top: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: width 0.4s ease, transform 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 header.shrink img {
@@ -32,50 +33,60 @@ header.shrink img {
 }
 
 header h1 {
+  margin: 8px 0;
   font-size: 1.9em;
   color: #4b3b2f;
-  margin: 10px 0 5px;
-  transition: font-size 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 header.shrink h1 {
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
 
-header .dates {
-  color: #5a4a3d;
+/* Dates fade away when scrolling */
+header p {
   font-style: italic;
-  margin: 0;
-  font-size: 1em;
+  color: #5a4a3d;
+  margin: -3px 0 0; /* lifted slightly upward */
+  font-size: 0.95em;
   opacity: 1;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease, margin 0.3s ease;
 }
 
-header.shrink .dates {
+header.shrink p {
   opacity: 0;
+  margin: 0;
 }
 
-/* ===== NAV BAR ===== */
+
+/* ========== NAVBAR ========== */
 nav {
-  margin-top: 10px;
+  position: fixed;
+  top: 215px; /* adjusted to sit perfectly under full header */
+  left: 0;
+  width: 100%;
   background-color: #e9e4df;
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding: 10px 0;
+  padding: 12px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  z-index: 9999;
   transition: all 0.4s ease;
 }
+
+/* When header shrinks */
+nav.nav-shrink {
+  top: 140px; /* aligns perfectly below minimized header */
+}
+
 
 nav a {
   text-decoration: none;
   color: #4b3b2f;
   font-weight: bold;
   position: relative;
-  padding-bottom: 4px;
+  padding-bottom: 5px;
   transition: color 0.3s ease;
 }
 
@@ -95,24 +106,52 @@ nav a:hover::after {
   width: 100%;
 }
 
-nav a:hover,
-nav a.active {
+nav a.active,
+nav a:hover {
   color: #a17b5c;
   text-shadow: 0 0 6px rgba(161, 123, 92, 0.4);
 }
 
-/* ===== CONTENT SECTIONS ===== */
+/* ========== BIBLE VERSE SECTION (UNCHANGED) ========== */
+#bible-verse {
+  padding-top: 320px; /* ensures verse starts below fixed header & nav */
+}
+
+.verse-section {
+  text-align: center;
+  background: #f4ede7;
+  color: #4b3b2f;
+  padding: 35px 15px;
+  margin: 0 auto 40px;
+  max-width: 850px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.verse-section p {
+  font-style: italic;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.verse-section small {
+  display: block;
+  font-size: 0.9em;
+  color: #6b5845;
+}
+
+/* ========== CONTENT SECTIONS (REDUCED SPACING) ========== */
 .content-section {
   max-width: 900px;
-  margin: 350px auto 80px;
-  padding: 20px;
+  margin: 40px auto 10px; /* reduced top and bottom spacing */
+  padding: 15px 18px;
   line-height: 1.8;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1s ease, transform 1s ease;
-  background-color: #fff;
+  background: #fffaf7;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .content-section.visible {
@@ -125,93 +164,72 @@ nav a.active {
   padding-bottom: 5px;
   color: #4b3b2f;
   font-size: 1.6em;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
-/* ===== BIBLE VERSE ===== */
-.verse-section {
-  text-align: center;
-  font-style: italic;
-  color: #5a4a3d;
-  background: #f5ede6;
-  margin-top: 350px;
-}
-
-.verse-section blockquote {
-  font-size: 1.2em;
-  margin: 20px auto 10px;
-}
-
-.verse-section cite {
-  display: block;
-  margin-top: 5px;
-  color: #7a6a5c;
-}
-
-/* ===== MASONRY GALLERY ===== */
-.masonry-gallery {
+/* ========== GALLERY (4 COLUMNS LAPTOP, 3 MOBILE) ========== */
+.gallery {
   column-count: 4;
   column-gap: 15px;
   margin-top: 20px;
-  padding: 0 10px;
 }
 
-.masonry-gallery img {
+.gallery img {
   width: 100%;
-  display: block;
-  margin-bottom: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
   break-inside: avoid;
 }
 
-.masonry-gallery img:hover {
+.gallery img:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== Responsive Masonry ===== */
-@media (max-width: 1024px) {
-  .masonry-gallery {
-    column-count: 3; /* 3 columns for phones/tablets */
-  }
-}
-
-@media (max-width: 600px) {
-  .masonry-gallery {
-    column-count: 2; /* fallback for very small screens */
-  }
-}
-
-/* ===== FOOTER ===== */
+/* ========== FOOTER ========== */
 footer {
   text-align: center;
-  padding: 40px 20px;
+  padding: 35px 20px;
   background-color: #f0ebe6;
   color: #5a4a3d;
   font-style: italic;
   border-top: 1px solid #d8c8b8;
 }
 
-/* ===== RESPONSIVE ===== */
+footer small {
+  display: block;
+  margin-top: 10px;
+  color: #7a6a5c;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 1024px) {
+  .gallery {
+    column-count: 3;
+  }
+}
+
 @media (max-width: 768px) {
   header img {
-    width: 100px;
-  }
-
-  header.shrink img {
-    width: 70px;
+    width: 90px;
   }
 
   nav {
-    flex-wrap: wrap;
-    font-size: 0.9em;
-    gap: 15px;
+    top: 210px; /* adjust for smaller headers */
+    gap: 12px;
+  }
+
+  nav.nav-shrink {
+    top: 130px; /* moves closer when shrunk */
   }
 
   .content-section {
-    margin: 300px auto 50px;
-    padding: 15px;
+    margin: 35px auto 10px; /* reduced spacing for mobile */
+    padding: 12px 14px;
+  }
+
+  .gallery {
+    column-count: 3;
   }
 }

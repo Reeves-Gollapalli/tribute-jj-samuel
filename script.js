@@ -1,5 +1,19 @@
-// ===== Section fade-in effect =====
-const sections = document.querySelectorAll(".content-section");
+// ===== HEADER SHRINK ON SCROLL + NAVBAR ALIGNMENT =====
+const header = document.querySelector("header");
+const nav = document.querySelector("nav");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    header.classList.add("shrink");
+    nav.classList.add("nav-shrink"); // move navbar closer when header shrinks
+  } else {
+    header.classList.remove("shrink");
+    nav.classList.remove("nav-shrink"); // reset navbar position
+  }
+});
+
+// ===== SCROLL FADE-IN ANIMATION =====
+const sections = document.querySelectorAll(".content-section, .verse-section");
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -10,29 +24,18 @@ const observer = new IntersectionObserver(
 );
 sections.forEach((section) => observer.observe(section));
 
-// ===== Scroll spy =====
+// ===== NAV ACTIVE LINK HIGHLIGHT (SCROLL SPY) =====
 const navLinks = document.querySelectorAll("nav a");
 window.addEventListener("scroll", () => {
   let current = "";
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 200;
+    const sectionTop = section.offsetTop - 250;
     if (scrollY >= sectionTop) current = section.getAttribute("id");
   });
-
   navLinks.forEach((link) => {
     link.classList.remove("active");
     if (link.getAttribute("href") === "#" + current) {
       link.classList.add("active");
     }
   });
-});
-
-// ===== Shrinking header on scroll =====
-const header = document.getElementById("main-header");
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 80) {
-    header.classList.add("shrink");
-  } else {
-    header.classList.remove("shrink");
-  }
 });
