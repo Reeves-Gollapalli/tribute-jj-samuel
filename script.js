@@ -1,11 +1,9 @@
 const header = document.getElementById("main-header");
 const sections = document.querySelectorAll("section.reveal");
 const navLinks = document.querySelectorAll(".nav-links a");
-const mobileToggle = document.getElementById("mobile-menu");
-const navMenu = document.querySelector(".nav-links");
 const bibleVerse = document.getElementById("bible-verse");
 
-// Adjust scroll offset
+// Adjust scroll offset for sticky elements
 function updateScrollMargin() {
   const navHeight = document.querySelector("nav").offsetHeight || 60;
   const headerHeight = header.offsetHeight || 160;
@@ -23,7 +21,7 @@ function revealOnScroll() {
   });
 }
 
-// Highlight current section in nav
+// Highlight current nav link
 function updateActiveLink() {
   let current = "";
   sections.forEach((section) => {
@@ -44,26 +42,6 @@ function onScroll() {
   updateActiveLink();
 }
 
-// Mobile menu toggle
-mobileToggle.addEventListener("click", () => {
-  const expanded = mobileToggle.getAttribute("aria-expanded") === "true";
-  mobileToggle.setAttribute("aria-expanded", String(!expanded));
-  navMenu.classList.toggle("show");
-  mobileToggle.classList.toggle("active");
-});
-
-// Close mobile menu when a link is clicked
-navLinks.forEach((a) => {
-  a.addEventListener("click", () => {
-    if (navMenu.classList.contains("show")) {
-      navMenu.classList.remove("show");
-      mobileToggle.classList.remove("active");
-      mobileToggle.setAttribute("aria-expanded", "false");
-    }
-  });
-});
-
-// Init on load
 window.addEventListener("load", () => {
   updateScrollMargin();
   revealOnScroll();
