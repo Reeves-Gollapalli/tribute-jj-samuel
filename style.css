@@ -104,6 +104,45 @@ nav ul li a:hover {
     color: #b37a50;
 }
 
+/* Bible Verse Banner */
+.verse-banner {
+  background: linear-gradient(to right, #fdfaf7, #f8f2ec);
+  padding: 30px 15px;
+  text-align: center;
+  border-bottom: 1px solid #e3d9cf;
+  color: #4a3422;
+  font-style: italic;
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+.verse-banner blockquote {
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  position: relative;
+}
+
+.verse-banner blockquote footer {
+  font-size: 1rem;
+  color: #7a5e47;
+  margin-top: 10px;
+  font-style: normal;
+}
+
+/* Optional soft fade when page loads */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 /* ===== MAIN CONTENT ===== */
 main {
     padding-top: 400px; /* space for header + nav */
