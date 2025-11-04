@@ -39,3 +39,17 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+
+
+// ===== TIMELINE SCROLL ANIMATION =====
+const timelineItems = document.querySelectorAll(".timeline-item");
+const timelineObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  },
+  { threshold: 0.2 }
+);
+timelineItems.forEach((item) => timelineObserver.observe(item));

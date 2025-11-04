@@ -235,29 +235,126 @@ footer small {
 }
 
 
-/* ========== OBITUARY TEXT STYLING ========== */
-.obituary-text {
-  text-align: justify;
+/* ========== PERFECT INLINE TIMELINE STYLING ========== */
+.timeline {
+  position: relative;
+  margin: 40px auto;
+  padding-left: 20px;
+  max-width: 850px;
+}
+
+/* Vertical line positioned beside content cards */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 220px; /* moves line next to cards */
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #d8c8b8;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 45px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  padding-left: 20px;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Date stays on the left */
+.timeline-date {
+  width: 180px;
+  text-align: right;
+  font-weight: bold;
+  color: #4b3b2f;
   font-size: 1.05em;
-  line-height: 1.9;
-  color: #3d2d20;
-  padding: 10px 0;
+  padding-right: 25px;
 }
 
-.obituary-text p {
-  margin-bottom: 18px;
-  text-indent: 40px; /* creates a classic paragraph indent */
+/* Dots aligned beside cards */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 214px; /* aligns dot exactly with vertical line */
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: #a17b5c;
+  border-radius: 50%;
+  border: 3px solid #f8f4f1;
+  box-shadow: 0 0 0 3px #d8c8b8;
 }
 
+.timeline-content {
+  background: #fffaf7;
+  border-radius: 8px;
+  padding: 18px 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: #3a2b20;
+  line-height: 1.8;
+  width: calc(100% - 240px);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .obituary-text {
-    font-size: 1em;
-    line-height: 1.7;
-    text-align: left;
+  .timeline {
+    padding-left: 10px;
   }
 
-  .obituary-text p {
-    text-indent: 25px;
-    margin-bottom: 15px;
+  .timeline::before {
+    left: 25px;
   }
+
+  .timeline-item {
+    flex-direction: column;
+    margin-left: 0;
+    padding-left: 30px;
+  }
+
+  .timeline-item::before {
+    left: 17px;
+    top: 10px;
+  }
+
+  .timeline-date {
+    text-align: left;
+    width: 100%;
+    padding: 0 0 8px 0;
+    font-weight: bold;
+  }
+
+  .timeline-content {
+    width: 100%;
+    font-size: 0.95em;
+  }
+}
+
+
+/* ========== FAMILY TREE SECTION ========== */
+.familytree-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.familytree-container img {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.familytree-container img:hover {
+  transform: scale(1.03);
 }
