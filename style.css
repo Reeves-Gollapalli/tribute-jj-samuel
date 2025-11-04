@@ -32,7 +32,7 @@ header h1 {
   color: #4b3b2f;
   font-size: 1.8em;
   position: relative;
-  top: -15px;            /* moves title slightly upward */
+  top: -10px;            /* moves title slightly upward */
   transition: all 0.3s ease;
 }
 
@@ -236,4 +236,25 @@ footer {
   header.shrink + nav { top: 110px; }
   .masonry-gallery { column-count: 2; }
   main { padding-top: 250px; }
+}
+
+
+/* ===== RESPONSIVE FIX FOR MOBILE HEADER ===== */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.4em;      /* reduce font size on mobile */
+    line-height: 1.3em;    /* keep spacing balanced */
+    text-align: center;    /* ensure perfect centering */
+    padding: 0 15px;       /* prevent text from touching edges */
+  }
+
+  header p.date {
+    font-size: 0.9em;      /* slightly smaller date */
+  }
+
+  nav {
+    flex-wrap: wrap;       /* allow nav items to wrap on small screens */
+    gap: 12px;
+    font-size: 0.95em;
+  }
 }
