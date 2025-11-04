@@ -233,3 +233,31 @@ footer small {
     column-count: 3;
   }
 }
+
+
+/* ========== OBITUARY TEXT STYLING ========== */
+.obituary-text {
+  text-align: justify;
+  font-size: 1.05em;
+  line-height: 1.9;
+  color: #3d2d20;
+  padding: 10px 0;
+}
+
+.obituary-text p {
+  margin-bottom: 18px;
+  text-indent: 40px; /* creates a classic paragraph indent */
+}
+
+@media (max-width: 768px) {
+  .obituary-text {
+    font-size: 1em;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .obituary-text p {
+    text-indent: 25px;
+    margin-bottom: 15px;
+  }
+}
