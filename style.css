@@ -148,24 +148,40 @@ nav a.active {
   color: #7a6a5c;
 }
 
-/* ===== GALLERY ===== */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+/* ===== MASONRY GALLERY ===== */
+.masonry-gallery {
+  column-count: 4;
+  column-gap: 15px;
   margin-top: 20px;
+  padding: 0 10px;
 }
 
-.gallery img {
-  width: 280px;
+.masonry-gallery img {
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  break-inside: avoid;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+.masonry-gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Responsive Masonry ===== */
+@media (max-width: 1024px) {
+  .masonry-gallery {
+    column-count: 3; /* 3 columns for phones/tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-gallery {
+    column-count: 2; /* fallback for very small screens */
+  }
 }
 
 /* ===== FOOTER ===== */
