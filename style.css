@@ -32,7 +32,7 @@ header h1 {
   color: #4b3b2f;
   font-size: 1.8em;
   position: relative;
-  top: -9px;            /* moves title slightly upward */
+  top: -15px;            /* moves title slightly upward */
   transition: all 0.3s ease;
 }
 
@@ -41,7 +41,7 @@ header p.date {
   font-style: italic;
   color: #5a4a3d;
   position: relative;
-  top: -2px;          /* moves date slightly upward */
+  top: -4px;          /* moves date slightly upward */
   transition: opacity 0.3s ease;
 }
 
