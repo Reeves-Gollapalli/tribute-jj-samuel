@@ -9,7 +9,7 @@
 <body>
 
   <!-- ===== HEADER ===== -->
-  <header id="main-header">
+  <header id="main-header" class="fade-in">
     <img src="Images/J.J. Samuel Portrait.png" alt="Portrait of J.J. Samuel" />
     <h1>In Loving Memory of J.J. Samuel</h1>
     <p>June 16, 1943 – October 29, 2025</p>
@@ -17,42 +17,60 @@
 
   <!-- ===== NAVIGATION ===== -->
   <nav id="main-nav">
-    <ul>
-      <li><a href="#obituary" class="active">Obituary</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#familytree">Family Tree</a></li>
-    </ul>
+    <div class="nav-container">
+      <div class="menu-toggle" id="mobile-menu" aria-label="toggle menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#obituary" class="active">Obituary</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#familytree">Family Tree</a></li>
+      </ul>
+    </div>
   </nav>
+
+  <!-- ===== BIBLE VERSE ===== -->
+  <section id="bible-verse" class="verse-banner fade-in">
+    <blockquote>
+      “The steadfast love of the Lord never ceases; his mercies never come to an end.  
+      They are new every morning; great is your faithfulness.”  
+      <footer>— Lamentations 3:22–23</footer>
+    </blockquote>
+  </section>
 
   <!-- ===== MAIN CONTENT ===== -->
   <main>
-    <section id="obituary">
+    <section id="obituary" class="reveal">
       <h2>Obituary</h2>
-      <p>J.J. Samuel's long life (indeed a blessed octogenarian) is a saga of pure love,
-         faith, courage, and sacrifice for his family and motherland, India. He lived
-         a remarkable life that continues to inspire those he left behind.
+      <p>
+        J.J. Samuel's long life (indeed a blessed octogenarian) is a saga of pure love,
+        faith, courage, and sacrifice for his family and motherland, India. He lived
+        a remarkable life that continues to inspire those he left behind.
       </p>
     </section>
 
-    <section id="timeline">
+    <section id="timeline" class="reveal">
       <h2>Timeline</h2>
-      <p>This section can be updated later with key events, milestones,
-         and achievements from J.J. Samuel’s life journey.</p>
+      <p>
+        This section can be updated later with key events, milestones,
+        and achievements from J.J. Samuel’s life journey.
+      </p>
     </section>
 
-    <section id="gallery">
+    <section id="gallery" class="reveal">
       <h2>Gallery</h2>
-      <p>Memories captured forever — photos celebrating moments of love and joy.</p>
       <div class="gallery">
         <img src="Images/Memories 1.png" alt="Memory 1" />
-        <img src="Images/Memories 2.png" alt="Memory 2" />
+        <img src="Images/memories 2.jpeg" alt="Memory 2" />
       </div>
     </section>
 
-    <section id="familytree">
+    <section id="familytree" class="reveal">
       <h2>Family Tree</h2>
-      <p>Discover the lineage and connections that define the Samuel family legacy.</p>
+      <p>
+        Discover the lineage and connections that define the Samuel family legacy.
+      </p>
     </section>
   </main>
 
