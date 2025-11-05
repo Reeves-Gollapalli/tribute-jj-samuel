@@ -60,17 +60,20 @@ header.shrink p.date {
 
 /* ===== NAVBAR ===== */
 nav {
-  position: relative; /* now flows just below the date */
-  top: 10px; /* adds a small gap under the date */
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   background-color: #e9e4df;
   display: flex;
   justify-content: center;
   gap: 25px;
   padding: 10px 0;
-  z-index: 10; /* still keeps it above content */
+  z-index: 999;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
+
+
 
 
 header.shrink + nav {
