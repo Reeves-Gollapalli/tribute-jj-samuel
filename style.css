@@ -476,3 +476,46 @@ footer {
     overflow-x: hidden;
   }
 }
+
+
+/* ===== FINAL UNIVERSAL NAVBAR FIX UNDER HEADER ===== */
+
+/* Desktop – perfect alignment, no gap */
+nav {
+  position: fixed;
+  top: calc(180px + 1.5em); /* sits directly below the date */
+  width: 100%;
+  background-color: #e9e4df;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 10px 0;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: top 0.3s ease;
+}
+
+/* Adjust on shrink */
+header.shrink + nav {
+  top: calc(100px + 1em);
+}
+
+/* Mobile Fix – clean placement below header */
+@media (max-width: 600px) {
+  nav {
+    position: fixed;
+    top: calc(110px + 1.2em);
+    background-color: #e9e4df;
+    width: 100%;
+    z-index: 999;
+    padding: 8px 0;
+  }
+
+  header.shrink + nav {
+    top: calc(85px + 1em);
+  }
+
+  main {
+    padding-top: 260px; /* prevents overlap */
+  }
+}
