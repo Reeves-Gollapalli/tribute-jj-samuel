@@ -59,18 +59,25 @@ header.shrink p.date {
 }
 
 /* ===== NAVBAR ===== */
-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #e9e4df;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 10px 0;
-  z-index: 999;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+/* --- FINAL FIX: Attach navbar right below header only on small screens --- */
+@media (max-width: 600px) {
+  nav {
+    position: fixed;
+    top: calc(100px + 3.2em); /* right below portrait and date */
+    background-color: #e9e4df;
+    width: 100%;
+    z-index: 999;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  header.shrink + nav {
+    top: calc(80px + 2.5em); /* adjust on shrink */
+  }
+
+  main {
+    padding-top: 260px; /* prevents overlap with fixed header + nav */
+  }
 }
 
 
