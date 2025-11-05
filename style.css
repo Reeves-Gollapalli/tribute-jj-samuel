@@ -519,3 +519,67 @@ header.shrink + nav {
     padding-top: 260px; /* prevents overlap */
   }
 }
+
+
+/* ===== FINAL FIX: Header + Navbar stay fixed together ===== */
+.header-nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1500;
+  background: linear-gradient(to bottom, #ffffff, #f7f4f1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* keep header normal inside wrapper */
+.header-nav-wrapper header {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+/* navbar fixed right below header — never moves on scroll */
+.header-nav-wrapper nav {
+  position: fixed;
+  top: 215px; /* Adjust to perfectly meet bottom of date */
+  left: 0;
+  width: 100%;
+  background-color: #e9e4df;
+  border-top: 1px solid #d6c8b6;
+  border-bottom: 1px solid #d6c8b6;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 10px 0;
+  z-index: 1499;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* when header shrinks, lift navbar accordingly */
+header.shrink + nav,
+.header-nav-wrapper header.shrink + nav {
+  top: 130px;
+}
+
+/* make room below header+nav so content doesn’t hide under them */
+main {
+  padding-top: 310px !important;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 600px) {
+  .header-nav-wrapper nav {
+    top: 170px; /* lower for smaller screens */
+    padding: 8px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  header.shrink + nav,
+  .header-nav-wrapper header.shrink + nav {
+    top: 110px;
+  }
+  main {
+    padding-top: 270px !important;
+  }
+}
