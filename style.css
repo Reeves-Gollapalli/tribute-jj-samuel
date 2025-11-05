@@ -1,145 +1,146 @@
-/* Base Reset */
+/* ========== BASE STYLES ========== */
 body {
-  margin: 0;
   font-family: "Georgia", serif;
+  margin: 0;
   background-color: #faf8f6;
-  color: #3a2b20;
+  color: #333;
   scroll-behavior: smooth;
 }
 
-/* ===== HEADER ===== */
+/* ========== HEADER ========== */
 header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: linear-gradient(to bottom, #fff, #f7f4f1);
   text-align: center;
+  background: linear-gradient(to bottom, #ffffff, #f7f4f1);
   z-index: 1000;
-  transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  padding: 20px 0 8px;
 }
 
 header img {
   width: 130px;
   border-radius: 50%;
-  margin-top: 10px;
-  transition: all 0.3s ease;
+  margin-top: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
 }
-
-header h1 {
-  margin: 5px 0 0;
-  color: #4b3b2f;
-  font-size: 1.8em;
-  position: relative;
-  top: -10px;            /* moves title slightly upward */
-  transition: all 0.3s ease;
-}
-
-header p.date {
-  margin: 2px 0 2px;  /* reduced bottom margin to lift it up */
-  font-style: italic;
-  color: #5a4a3d;
-  position: relative;
-  top: -4px;          /* moves date slightly upward */
-  transition: opacity 0.3s ease;
-}
-
 
 header.shrink img {
   width: 80px;
 }
 
-header.shrink h1 {
-  font-size: 1.3em;
+header h1 {
+  font-size: 1.9em;
+  color: #4b3b2f;
+  margin: 6px 0 0;
+  position: relative;
+  top: -6px;
+  transition: all 0.4s ease;
+}
+
+header p.date {
+  margin: 2px 0 2px;
+  font-style: italic;
+  color: #5a4a3d;
+  position: relative;
+  top: -6px;
+  transition: opacity 0.3s ease;
 }
 
 header.shrink p.date {
   opacity: 0;
 }
 
-/* ===== NAVBAR ===== */
+/* ========== NAVBAR ========== */
 nav {
   position: fixed;
-  top: 220px; /* start below header image */
+  top: 215px;
   width: 100%;
   background-color: #e9e4df;
   display: flex;
   justify-content: center;
-  gap: 25px;
-  padding: 10px 0;
-  z-index: 1500; /* ensure above all content */
-  transition: top 0.3s ease;
+  gap: 20px;
+  padding: 12px 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  z-index: 999;
+  transition: all 0.4s ease;
 }
 
 header.shrink + nav {
-  top: 130px; /* moves upward when header shrinks */
+  top: 140px;
 }
-
 
 nav a {
   text-decoration: none;
   color: #4b3b2f;
   font-weight: bold;
   position: relative;
-}
-
-nav a.active,
-nav a:hover {
-  color: #a17b5c;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
 }
 
 nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -3px;
+  bottom: 0;
   width: 0%;
   height: 2px;
   background: #a17b5c;
   transition: width 0.3s ease;
 }
 
-nav a.active::after,
-nav a:hover::after {
+nav a:hover::after,
+nav a.active::after {
   width: 100%;
 }
 
-/* ===== MAIN ===== */
-main {
-  padding-top: 280px; /* Header + Navbar height */
+nav a:hover,
+nav a.active {
+  color: #a17b5c;
 }
 
-/* ===== VERSE SECTION ===== */
+/* ========== VERSE SECTION ========== */
 .verse-section {
   text-align: center;
-  background: #f4ede7;
+  background: #f5ede6;
   color: #4b3b2f;
-  padding: 30px 15px;
-  margin: 30px auto;
   max-width: 850px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin: 80px auto 60px;
+  padding: 35px 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-.verse-section p {
+.verse-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.verse-section blockquote {
   font-style: italic;
-  font-size: 1.1em;
+  font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-/* ===== CONTENT SECTIONS ===== */
+/* ========== CONTENT SECTIONS ========== */
 .content-section {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 50px auto 20px;
+  padding: 18px 20px;
+  line-height: 1.8;
   background: #fffaf7;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
 .content-section.visible {
@@ -147,23 +148,47 @@ main {
   transform: translateY(0);
 }
 
-.content-section h2 {
-  border-bottom: 2px solid #d8c8b8;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
+/* ========== OBITUARY TEXT ========== */
+.obituary-text {
+  text-align: justify;
+  font-size: 1.05em;
+  line-height: 1.9;
+  color: #3d2d20;
+  padding: 10px 0;
 }
 
-/* ===== TIMELINE ===== */
+.obituary-text p {
+  margin-bottom: 18px;
+  text-indent: 40px;
+}
+
+/* ========== TIMELINE ========== */
 .timeline {
-  border-left: 4px solid #a17b5c;
+  position: relative;
+  margin: 40px auto;
   padding-left: 20px;
+  max-width: 850px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 220px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #d8c8b8;
 }
 
 .timeline-item {
-  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 45px;
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+  padding-left: 20px;
 }
 
 .timeline-item.visible {
@@ -172,123 +197,147 @@ main {
 }
 
 .timeline-date {
+  width: 180px;
+  text-align: right;
   font-weight: bold;
-  color: #6b5845;
+  color: #4b3b2f;
+  font-size: 1.05em;
+  padding-right: 25px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 214px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: #a17b5c;
+  border-radius: 50%;
+  border: 3px solid #f8f4f1;
+  box-shadow: 0 0 0 3px #d8c8b8;
 }
 
 .timeline-content {
-  background: #fff;
-  padding: 15px 20px;
+  background: #fffaf7;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 18px 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: #3a2b20;
+  line-height: 1.8;
+  width: calc(100% - 240px);
 }
 
-/* ===== GALLERY (MASONRY) ===== */
-.masonry-gallery {
+/* ========== GALLERY ========== */
+.gallery {
   column-count: 4;
   column-gap: 15px;
-  margin-top: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 5px 0;
 }
 
-.masonry-gallery img {
+.gallery img {
   width: 100%;
   border-radius: 10px;
   margin-bottom: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  break-inside: avoid;
   transition: transform 0.3s ease;
+  break-inside: avoid;
 }
 
-.masonry-gallery img:hover {
-  transform: scale(1.03);
+.gallery img:hover {
+  transform: scale(1.04);
 }
 
-/* ===== FAMILY TREE ===== */
+/* ========== FAMILY TREE ========== */
 .familytree-container {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
 }
 
 .familytree-container img {
   max-width: 90%;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
-/* ===== FOOTER ===== */
+.familytree-container img:hover {
+  transform: scale(1.03);
+}
+
+/* ========== FOOTER ========== */
 footer {
   text-align: center;
-  background: #f0ebe6;
-  padding: 30px;
-  font-style: italic;
+  padding: 40px 20px;
+  background-color: #f0ebe6;
   color: #5a4a3d;
-  margin-top: 40px;
+  font-style: italic;
+  border-top: 1px solid #d8c8b8;
 }
 
-/* ===== RESPONSIVE ===== */
+footer small {
+  display: block;
+  margin-top: 10px;
+  color: #7a6a5c;
+}
+
+/* ========== RESPONSIVE FIXES ========== */
 @media (max-width: 1024px) {
-  .masonry-gallery { column-count: 3; }
+  .gallery {
+    column-count: 3;
+  }
+  .timeline::before {
+    left: 160px;
+  }
+  .timeline-item::before {
+    left: 154px;
+  }
+  .timeline-content {
+    width: calc(100% - 170px);
+  }
 }
+
 @media (max-width: 768px) {
-  header img { width: 100px; }
-  header.shrink img { width: 70px; }
-  nav { flex-wrap: wrap; gap: 15px; top: 160px; }
-  header.shrink + nav { top: 110px; }
-  .masonry-gallery { column-count: 2; }
-  main { padding-top: 250px; }
-}
-
-
-/* ===== RESPONSIVE FIX FOR MOBILE HEADER (IMPROVED) ===== */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: clamp(1.1em, 4.5vw, 1.5em); /* scales dynamically with screen width */
-    line-height: 1.2em;
-    text-align: center;
-    padding: 0 22px;           /* keeps text from hitting edges */
-    word-break: break-word;    /* gracefully wraps long names */
-    white-space: normal;       /* allows proper line wrapping */
-    position: relative;
-    top: -6px;                 /* keeps balance with portrait */
+  header img {
+    width: 100px;
   }
-
-  header p.date {
-    font-size: 0.95em;
-    line-height: 1.2em;
-    top: -6px;
-  }
-
   nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 0.95em;
-    gap: 10px;
-    padding: 6px 0;
+    top: 210px;
+    gap: 12px;
+  }
+  header.shrink + nav {
+    top: 130px;
+  }
+  .gallery {
+    column-count: 2;
   }
 }
 
-/* ===== MOBILE HEADER + NAVBAR FIX ===== */
+/* ========== UNIVERSAL MOBILE FIX (ANDROID + iPHONE) ========== */
 @media (max-width: 600px) {
   header {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     background: #faf7f2;
-    padding-bottom: 6px;
+    padding-bottom: 8px;
   }
 
-  nav {
-    position: sticky;
-    top: 110px; /* aligns just below the header portrait and title */
-    z-index: 999;
-    background: #e9dfd3;
-    border-top: 1px solid #d6c8b6;
-    border-bottom: 1px solid #d6c8b6;
-    padding: 6px 0;
+  header h1 {
+    font-size: clamp(1em, 4.5vw, 1.4em);
+    padding: 0 20px;
+    line-height: 1.3em;
+    word-break: break-word;
   }
 
-  body {
-    overflow-x: hidden;
+  header p.date {
+    font-size: 0.9em;
+    line-height: 1.2em;
   }
 
   header img {
@@ -296,142 +345,24 @@ footer {
     height: 85px;
     object-fit: cover;
   }
-}
-
-
-/* ===== UNIVERSAL MOBILE + SAFARI FIX FOR HEADER & NAV ===== */
-@supports (-webkit-touch-callout: none) or (overflow: -webkit-paged-x) {
-  /* Special fix for iOS Safari */
-  header,
-  nav {
-    position: -webkit-sticky;
-    position: sticky;
-    z-index: 1000;
-    backface-visibility: hidden;
-    transform: translateZ(0); /* hardware acceleration prevents flicker */
-  }
-
-  header {
-    top: 0;
-    background-color: #faf7f2;
-    padding-bottom: 6px;
-  }
-
-  nav {
-    top: 110px; /* sits right below the portrait & title */
-    background-color: #e9dfd3;
-    border-top: 1px solid #d6c8b6;
-    border-bottom: 1px solid #d6c8b6;
-    padding: 8px 0;
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #faf7f2;
-    z-index: 1000;
-  }
 
   nav {
     position: fixed;
-    top: 105px; /* adjust if portrait overlaps */
-    width: 100%;
-    background: #e9dfd3;
-    border-top: 1px solid #d6c8b6;
-    border-bottom: 1px solid #d6c8b6;
+    top: 110px;
     z-index: 999;
-  }
-
-  /* Prevent body content from going under the fixed elements */
-  body {
-    padding-top: 190px; /* gives room below header + nav */
-    overflow-x: hidden;
-  }
-
-  /* Reduce font and spacing for long titles */
-  header h1 {
-    font-size: clamp(1em, 4.2vw, 1.4em);
-    padding: 0 20px;
-    line-height: 1.3em;
-    text-align: center;
-    word-break: break-word;
-  }
-
-  header p.date {
-    font-size: 0.9em;
-    line-height: 1.2em;
-  }
-
-  header img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-  }
-}
-
-
-/* ===== FINAL MOBILE + SAFARI SAFE FIX FOR NAVBAR ===== */
-@supports (-webkit-touch-callout: none) or (overflow: -webkit-paged-x) {
-  header, nav {
-    position: relative !important;
-    z-index: 1000;
-  }
-
-  .header-nav-wrapper {
-    position: fixed;
-    top: env(safe-area-inset-top, 0);
-    left: 0;
     width: 100%;
-    z-index: 1000;
-    background: #faf7f2;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding-bottom: 5px;
-  }
-
-  header {
-    text-align: center;
-    padding: 10px 0 2px;
-    background: #faf7f2;
-  }
-
-  nav {
-    background: #e9dfd3;
+    background: #e9e4df;
     border-top: 1px solid #d6c8b6;
     border-bottom: 1px solid #d6c8b6;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
     padding: 10px 0;
   }
 
   body {
-    padding-top: 200px; /* ensures no overlap with fixed header+nav */
-    margin: 0;
+    padding-top: 200px;
     overflow-x: hidden;
-  }
-
-  header img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-
-  header h1 {
-    font-size: clamp(1em, 4.2vw, 1.4em);
-    line-height: 1.3em;
-    margin: 8px 0 4px;
-    padding: 0 20px;
-    word-break: break-word;
-  }
-
-  header p.date {
-    font-size: 0.9em;
-    line-height: 1.2em;
-    color: #5c4b3a;
   }
 }
